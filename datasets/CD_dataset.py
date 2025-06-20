@@ -8,7 +8,7 @@ import numpy as np
 
 from torch.utils import data
 
-from datasets.data_utils import CDDataAugmentation
+from datasets.data_utils import CDDataAugmentation    # 数据增强模块导入
 
 
 """
@@ -18,18 +18,18 @@ CD data set with pixel-level labels；
 ├─label
 └─list
 """
-IMG_FOLDER_NAME = "A"
-IMG_POST_FOLDER_NAME = 'B'
-LIST_FOLDER_NAME = 'list'
-ANNOT_FOLDER_NAME = "label"
+IMG_FOLDER_NAME = "A"           #存储第一时相图像的文件夹名。
+IMG_POST_FOLDER_NAME = 'B'      #存储第二时相图像的文件夹名。
+LIST_FOLDER_NAME = 'list'       #存储文件列表的文件夹名。
+ANNOT_FOLDER_NAME = "label"     #存储标签文件的文件夹名。
 
-IGNORE = 255
+IGNORE = 255                    # 忽略的像素标签。
 
-label_suffix='.png' # jpg for gan dataset, others : png
+label_suffix='.png' # jpg for gan dataset, others : png             # 标签文件后缀。
 
 def load_img_name_list(dataset_path):
-    img_name_list = np.loadtxt(dataset_path, dtype=np.str)
-    if img_name_list.ndim == 2:
+    img_name_list = np.loadtxt(dataset_path, dtype=str)
+    if img_name_list.ndim == 2:                                     # 如果返回的是二维数组，则只返回第一列。
         return img_name_list[:, 0]
     return img_name_list
 

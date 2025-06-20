@@ -7,10 +7,10 @@ class DataConfig:
         self.data_name = data_name
         if data_name == 'LEVIR':
             self.label_transform = "norm"
-            self.root_dir = '/media/lidan/ssd2/CDData/LEVIR-CD256/'
+            self.root_dir = '/home/morning-light/LEVIR-CD256/'
         elif data_name == 'DSIFN':
             self.label_transform = "norm"
-            self.root_dir = '/media/lidan/ssd2/CDData/DSIFN_256/'
+            self.root_dir = '/home/morning-light//DSIFN/'
         elif data_name == 'WHU':
             self.label_transform = "norm"
             self.root_dir = '/media/lidan/ssd2/CDData/WHU-CD-256/'

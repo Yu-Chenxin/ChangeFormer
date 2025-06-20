@@ -9,7 +9,7 @@ from torchvision import transforms
 import torch
 
 
-def to_tensor_and_norm(imgs, labels):
+def to_tensor_and_norm(imgs, labels):       # 将输入的图像和标签转换为 PyTorch 张量，并对图像进行归一化处理。
     # to tensor
     imgs = [TF.to_tensor(img) for img in imgs]
     labels = [torch.from_numpy(np.array(img, np.uint8)).unsqueeze(dim=0)
@@ -25,13 +25,13 @@ class CDDataAugmentation:
     def __init__(
             self,
             img_size,
-            with_random_hflip=False,
-            with_random_vflip=False,
-            with_random_rot=False,
-            with_random_crop=False,
-            with_scale_random_crop=False,
-            with_random_blur=False,
-            random_color_tf=False
+            with_random_hflip=False,        # 是否启用水平翻转。
+            with_random_vflip=False,        # 是否启用垂直翻转。
+            with_random_rot=False,          # 是否启用随机旋转。
+            with_random_crop=False,         # 是否启用随机裁剪。
+            with_scale_random_crop=False,   # 是否启用缩放后随机裁剪。
+            with_random_blur=False,         # 是否启用高斯模糊。
+            random_color_tf=False           # 是否启用随机颜色变换。
     ):
         self.img_size = img_size
         if self.img_size is None:
@@ -45,7 +45,7 @@ class CDDataAugmentation:
         self.with_scale_random_crop = with_scale_random_crop
         self.with_random_blur = with_random_blur
         self.random_color_tf=random_color_tf
-    def transform(self, imgs, labels, to_tensor=True):
+    def transform(self, imgs, labels, to_tensor=True):   #如果 to_tensor 为 True，则将图像和标签转换为张量并进行归一化。   
         """
         :param imgs: [ndarray,]
         :param labels: [ndarray,]
@@ -140,7 +140,7 @@ class CDDataAugmentation:
             imgs = [TF.normalize(img, mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
                     for img in imgs]
 
-        return imgs, labels
+        return  imgs, labels
 
 
 def pil_crop(image, box, cropsize, default_value):

@@ -21,10 +21,24 @@ from scipy.io import savemat
 from models.pixel_shuffel_up import PS_UP
 
 class EncoderTransformer(nn.Module):
-    def __init__(self, img_size=256, patch_size=16, in_chans=3, num_classes=2, embed_dims=[64, 128, 256, 512],
-                 num_heads=[1, 2, 4, 8], mlp_ratios=[4, 4, 4, 4], qkv_bias=False, qk_scale=None, drop_rate=0.,
-                 attn_drop_rate=0., drop_path_rate=0., norm_layer=nn.LayerNorm,
-                 depths=[3, 4, 6, 3], sr_ratios=[8, 4, 2, 1]):
+    def __init__(
+            self, 
+            img_size=256,                       # 图像大小
+            patch_size=16,                      # 块大小
+            in_chans=3,                         # 输入通道数
+            num_classes=2,                      # 类别数
+            embed_dims=[64, 128, 256, 512],     # 嵌入维度
+            num_heads=[1, 2, 4, 8],             # 头数
+            mlp_ratios=[4, 4, 4, 4],            # MLP 缩放比
+            qkv_bias=False,                     # QKV 偏置
+            qk_scale=None,                      # QK 缩放比
+            drop_rate=0.,                       # 随机丢弃概率
+            attn_drop_rate=0.,                  # 注意力随机丢弃概率
+            drop_path_rate=0.,                  # 路径随机丢弃概率
+            norm_layer=nn.LayerNorm,            # 正则化层
+            depths=[3, 4, 6, 3],                # 层数
+            sr_ratios=[8, 4, 2, 1]              # 缩放比例
+            ):
         super().__init__()
         self.num_classes = num_classes
         self.depths = depths

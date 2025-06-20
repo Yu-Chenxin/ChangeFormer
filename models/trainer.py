@@ -155,7 +155,7 @@ class CDTrainer():
             self.logger.write('\n')
         elif self.args.pretrain is not None:
             print("Initializing backbone weights from: " + self.args.pretrain)
-            self.net_G.load_state_dict(torch.load(self.args.pretrain), strict=False)
+            self.net_G.load_state_dict(torch.load(self.args.pretrain, weights_only=False), strict=False)
             self.net_G.to(self.device)
             self.net_G.eval()
         else:

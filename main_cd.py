@@ -71,7 +71,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     utils.get_device(args)
-    print(args.gpu_ids)
+    print("args.gpu_ids:", args.gpu_ids)
+    # print(args.gpu_ids)
     
     #  checkpoints dir
     args.checkpoint_dir = os.path.join(args.checkpoint_root, args.project_name)
